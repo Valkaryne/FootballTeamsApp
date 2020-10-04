@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/team_stats_list_fragment">
+
+    <fragment
+        android:id="@+id/team_stats_list_fragment"
+        android:name="com.epam.valkaryne.footballteamsapp.view.TeamStatsListFragment"
+        tools:layout="@layout/fragment_team_stats_list" />
+
+</navigation>

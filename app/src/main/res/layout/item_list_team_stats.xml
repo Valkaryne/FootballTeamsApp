@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSurface"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/team_stats_item_image"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:contentDescription="@string/a11y_team_stats_item_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars[3]" />
+
+        <TextView
+            android:id="@+id/team_stats_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textColor="@color/colorOnSurface"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/team_stats_item_position"
+            app:layout_constraintStart_toEndOf="@id/team_stats_item_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Chelsea FC" />
+
+        <TextView
+            android:id="@+id/team_stats_item_position"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1st" />
+
+        <TextView
+            android:id="@+id/team_stats_item_played"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/team_stats_item_title"
+            app:layout_constraintTop_toBottomOf="@id/team_stats_item_title"
+            tools:text="Played games: 0" />
+
+        <LinearLayout
+            android:id="@+id/team_stats_item_games"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/team_stats_item_played"
+            app:layout_constraintTop_toBottomOf="@id/team_stats_item_played">
+
+            <TextView
+                android:id="@+id/team_stats_item_won"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_won_16"
+                android:drawablePadding="4dp"
+                tools:text="Won: 0" />
+
+            <TextView
+                android:id="@+id/team_stats_item_draw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_draw_16"
+                android:drawablePadding="4dp"
+                tools:text="Draw: 0" />
+
+            <TextView
+                android:id="@+id/team_stats_item_lost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_lost_16"
+                android:drawablePadding="4dp"
+                tools:text="Lost: 0" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/team_stats_item_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Score: 0" />
+
+        <TextView
+            android:id="@+id/team_stats_item_goals_diff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/team_stats_item_score"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Goals difference: 0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

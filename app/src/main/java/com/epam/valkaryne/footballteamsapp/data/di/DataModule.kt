@@ -1,7 +1,10 @@
 package com.epam.valkaryne.footballteamsapp.data.di
 
 import com.epam.valkaryne.footballteamsapp.BuildConfig
+import com.epam.valkaryne.footballteamsapp.data.api.FootballDataApiDataSource
 import com.epam.valkaryne.footballteamsapp.data.api.retrofit.FootballDataApiService
+import com.epam.valkaryne.footballteamsapp.data.repository.TeamsRepositoryImpl
+import com.epam.valkaryne.footballteamsapp.domain.TeamsRepository
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -34,7 +37,9 @@ private fun provideRetrofitInstance(client: OkHttpClient): Retrofit = Retrofit.B
     .build()
 
 val footballDataApiModule = module {
-    factory { provideFootballDataApiService(retrofit = get()) }
+    single { provideFootballDataApiService(retrofit = get()) }
+    single { FootballDataApiDataSource(service = get()) }
+    single<TeamsRepository> { TeamsRepositoryImpl(dataSource = get()) }
 }
 
 private fun provideFootballDataApiService(retrofit: Retrofit): FootballDataApiService =

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">FootballTeamsApp</string>
+
+    <string name="a11y_team_stats_item_image">Team\'s Crest</string>
+
+    <string name="played_games_label">Played games: %s</string>
+    <string name="games_won_label">Won: %s</string>
+    <string name="games_draw_label">Draw: %s</string>
+    <string name="games_lost_label">Lost: %s</string>
+    <string name="goals_difference_label">Goals difference: %s</string>
+    <string name="score_label">Score: %s</string>
 </resources>
