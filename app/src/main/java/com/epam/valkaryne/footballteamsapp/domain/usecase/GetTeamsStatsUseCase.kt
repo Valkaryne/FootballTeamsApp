@@ -16,10 +16,10 @@ class GetTeamsStatsUseCase(private val repository: TeamsRepository) {
                     getSortedByGoalsDifferenceStats(it.data)
                 )
             } else {
-                Result.error(it.error)
+                it
             }
         }
-        
+
         return teamsStats
     }
 

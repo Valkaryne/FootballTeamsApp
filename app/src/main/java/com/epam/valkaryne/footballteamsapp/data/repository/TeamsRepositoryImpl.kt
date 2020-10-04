@@ -13,7 +13,7 @@ class TeamsRepositoryImpl(private val dataSource: FootballDataApiDataSource) : T
         val standingsResult = dataSource.getStandings()
 
         return if (standingsResult.resultType == ResultType.SUCCESS) {
-            Result.success(TeamsStatsDomainModelMapper.map(standingsResult.data?.firstOrNull()?.table))
+            Result.success(TeamsStatsDomainModelMapper.map(standingsResult.data?.firstOrNull { it.table != null }?.table))
         } else {
             Result.error(standingsResult.error)
         }

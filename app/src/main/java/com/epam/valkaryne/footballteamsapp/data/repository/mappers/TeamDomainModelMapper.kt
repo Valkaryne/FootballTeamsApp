@@ -9,11 +9,11 @@ import com.epam.valkaryne.footballteamsapp.domain.model.TeamDomailModel
  */
 object TeamDomainModelMapper : BaseMapper<TeamDataModel, TeamDomailModel> {
 
-    override fun map(model: TeamDataModel?): TeamDomailModel {
+    override fun map(modelType: TeamDataModel?): TeamDomailModel {
         return TeamDomailModel(
-            id = model?.id ?: -1,
-            name = model?.name ?: "",
-            crestUrl = model?.crestUrl
+            id = modelType?.id ?: -1,
+            name = modelType?.name ?: "",
+            crestUrl = modelType?.crestUrl
         )
     }
 }

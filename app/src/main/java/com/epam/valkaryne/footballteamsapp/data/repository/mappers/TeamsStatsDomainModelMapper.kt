@@ -11,9 +11,9 @@ import com.epam.valkaryne.footballteamsapp.domain.model.TeamsStatsDomainModel
 object TeamsStatsDomainModelMapper :
     BaseMapper<List<TeamStatsDataModel>, TeamsStatsDomainModel> {
 
-    override fun map(modelList: List<TeamStatsDataModel>?): TeamsStatsDomainModel {
+    override fun map(modelType: List<TeamStatsDataModel>?): TeamsStatsDomainModel {
         return TeamsStatsDomainModel(
-            modelList?.map {
+            modelType?.map {
                 TeamStatsDomainModel(
                     position = it.position ?: -1,
                     team = TeamDomainModelMapper.map(it.team),

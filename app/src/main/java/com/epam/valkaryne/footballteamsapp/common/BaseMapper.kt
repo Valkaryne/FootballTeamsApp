@@ -9,10 +9,10 @@ package com.epam.valkaryne.footballteamsapp.common
 interface BaseMapper<in A, out B> {
 
     /**
-     * Transforms given model to chosen.
+     * Transforms given model type to chosen.
      *
-     * @param model the given model
+     * @param model the given model type
      * @return the mapping result
      */
-    fun map(model: A?): B
+    fun map(modelType: A?): B
 }
