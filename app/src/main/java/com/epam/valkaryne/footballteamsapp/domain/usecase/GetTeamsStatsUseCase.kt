@@ -5,8 +5,16 @@ import com.epam.valkaryne.footballteamsapp.domain.model.TeamsStatsDomainModel
 import com.epam.valkaryne.footballteamsapp.common.datatype.Result
 import com.epam.valkaryne.footballteamsapp.common.datatype.ResultType
 
+/**
+ * Domain logic to get football teams' statistics from API
+ */
 class GetTeamsStatsUseCase(private val repository: TeamsRepository) {
 
+    /**
+     * Executes domain logic
+     *
+     * @return wrapped result with list of teams' statistics
+     */
     suspend fun executeUseCase(): Result<TeamsStatsDomainModel> {
         var teamsStats: Result<TeamsStatsDomainModel>
 

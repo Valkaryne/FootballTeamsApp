@@ -1,6 +1,9 @@
 package com.epam.valkaryne.footballteamsapp.domain.model
 
-data class TeamDomailModel(
+/**
+ * Data class that represents team's info for domain layer
+ */
+data class TeamDomainModel(
     val id: Long,
     val name: String,
     val crestUrl: String?
