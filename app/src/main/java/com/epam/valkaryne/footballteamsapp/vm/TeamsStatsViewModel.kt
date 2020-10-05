@@ -21,12 +21,14 @@ class TeamsStatsViewModel(private val getTeamsStatsUseCase: GetTeamsStatsUseCase
         _teamsStatsViewState
 
     /**
-     * Gets teams' statistics
+     * Gets teams' statistics for the selected league
+     *
+     * @param id the id of the selected league
      */
-    fun getAllTeamsStats() {
+    fun getAllTeamsStats(id: Long) {
         _teamsStatsViewState.value = ViewState.Loading
         viewModelScope.launch {
-            getTeamsStatsUseCase.executeUseCase().let { result ->
+            getTeamsStatsUseCase.executeUseCase(id).let { result ->
                 if (result.resultType == ResultType.SUCCESS) {
                     _teamsStatsViewState.value =
                         TeamsStatsViewStateMapper(result.data?.teamsStats)

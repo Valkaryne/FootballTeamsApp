@@ -22,6 +22,8 @@ class TeamDetailsViewModel(private val getTeamDetailsUseCase: GetTeamDetailsUseC
 
     /**
      * Gets details of the selected football team
+     *
+     * @param id the id of the selected football team
      */
     fun getTeamDetails(id: Long) {
         _teamDetailsViewState.value = ViewState.Loading

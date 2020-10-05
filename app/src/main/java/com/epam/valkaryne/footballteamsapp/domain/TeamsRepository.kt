@@ -12,9 +12,10 @@ interface TeamsRepository {
     /**
      * Get a list with statistic with all football teams from the certain league
      *
+     * @param id the id of a league
      * @return a wrapped result of the request
      */
-    suspend fun getAllTeamsStats(): Result<TeamsStatsDomainModel>
+    suspend fun getAllTeamsStats(id: Long): Result<TeamsStatsDomainModel>
 
     /**
      * Get a detailed information about the certain team

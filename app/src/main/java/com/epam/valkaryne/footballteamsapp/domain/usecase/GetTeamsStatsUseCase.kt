@@ -13,12 +13,13 @@ class GetTeamsStatsUseCase(private val repository: TeamsRepository) {
     /**
      * Executes domain logic
      *
+     * @param id the id of a league
      * @return wrapped result with list of teams' statistics
      */
-    suspend fun executeUseCase(): Result<TeamsStatsDomainModel> {
+    suspend fun executeUseCase(id: Long): Result<TeamsStatsDomainModel> {
         var teamsStats: Result<TeamsStatsDomainModel>
 
-        repository.getAllTeamsStats().let {
+        repository.getAllTeamsStats(id).let {
             teamsStats = if (it.resultType == ResultType.SUCCESS) {
                 Result.success(
                     getSortedByGoalsDifferenceStats(it.data)

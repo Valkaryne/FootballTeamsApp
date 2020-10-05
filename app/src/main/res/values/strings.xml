@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">FootballTeamsApp</string>
+    <string name="football_data_prompt">Welcome to the FootballData Application!\nPlease, choose the country which football teams you are interested in</string>
 
     <string name="a11y_team_crest_image">Team\'s Crest</string>
 

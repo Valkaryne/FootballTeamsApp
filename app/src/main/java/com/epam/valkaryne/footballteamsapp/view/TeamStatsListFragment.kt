@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.epam.valkaryne.footballteamsapp.databinding.FragmentTeamStatsListBinding
 import com.epam.valkaryne.footballteamsapp.view.adapter.TeamStatsAdapter
@@ -22,6 +23,8 @@ import org.koin.core.parameter.parametersOf
  * Fragment that shows to user a list of teams' statistics for the certain league
  */
 class TeamStatsListFragment : Fragment() {
+
+    private val args: TeamStatsListFragmentArgs by navArgs()
 
     private val teamDetailsListener: (TeamStatsViewStateModel) -> Unit = {
         findNavController().navigate(
@@ -53,7 +56,7 @@ class TeamStatsListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getAllTeamsStats()
+        viewModel.getAllTeamsStats(args.leagueId)
     }
 
     private fun subscribeUi() {

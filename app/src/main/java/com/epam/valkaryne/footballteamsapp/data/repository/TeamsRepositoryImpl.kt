@@ -11,8 +11,8 @@ import com.epam.valkaryne.footballteamsapp.domain.model.TeamsStatsDomainModel
 
 class TeamsRepositoryImpl(private val dataSource: FootballDataApiDataSource) : TeamsRepository {
 
-    override suspend fun getAllTeamsStats(): Result<TeamsStatsDomainModel> {
-        val standingsResult = dataSource.getStandings()
+    override suspend fun getAllTeamsStats(id: Long): Result<TeamsStatsDomainModel> {
+        val standingsResult = dataSource.getStandings(id)
 
         return if (standingsResult.resultType == ResultType.SUCCESS) {
             Result.success(TeamsStatsDomainModelMapper(standingsResult.data?.firstOrNull { it.table != null }?.table))

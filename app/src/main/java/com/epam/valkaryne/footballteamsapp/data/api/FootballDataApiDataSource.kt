@@ -13,11 +13,12 @@ class FootballDataApiDataSource(private val service: FootballDataApiService) {
     /**
      * Gets from API standings for a particular competition.
      *
+     * @param id the id of a competition
      * @return wrapped result of the request
      */
-    suspend fun getStandings(): Result<List<StandingDataModel>> {
+    suspend fun getStandings(id: Long): Result<List<StandingDataModel>> {
         return try {
-            val response = service.getStandings()
+            val response = service.getStandings(id)
             Result.success(response.standings)
         } catch (ex: Exception) {
             Result.error(ex)

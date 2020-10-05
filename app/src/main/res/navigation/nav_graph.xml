@@ -2,7 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/team_stats_list_fragment">
+    app:startDestination="@id/choose_country_fragment">
+
+    <fragment
+        android:id="@+id/choose_country_fragment"
+        android:name="com.epam.valkaryne.footballteamsapp.view.ChooseCountryFragment"
+        tools:layout="@layout/fragment_choose_country">
+        <action
+            android:id="@+id/action_chooseCountryFragment_to_teamStatsFragment"
+            app:destination="@id/team_stats_list_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/team_stats_list_fragment"
@@ -11,6 +20,10 @@
         <action
             android:id="@+id/action_teamStatsFragment_to_teamDetailsFragment"
             app:destination="@id/team_details_fragment" />
+        <argument
+            android:name="leagueId"
+            app:argType="long"
+            app:nullable="false" />
     </fragment>
 
     <fragment
