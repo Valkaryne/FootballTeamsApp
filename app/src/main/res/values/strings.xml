@@ -1,12 +1,21 @@
 <resources>
     <string name="app_name">FootballTeamsApp</string>
 
-    <string name="a11y_team_stats_item_image">Team\'s Crest</string>
+    <string name="a11y_team_crest_image">Team\'s Crest</string>
 
-    <string name="played_games_label">Played games: %s</string>
-    <string name="games_won_label">Won: %s</string>
-    <string name="games_draw_label">Draw: %s</string>
-    <string name="games_lost_label">Lost: %s</string>
-    <string name="goals_difference_label">Goals difference: %s</string>
-    <string name="score_label">Score: %s</string>
+    <string name="played_games_text">Played games: %s</string>
+    <string name="games_won_text">Won: %s</string>
+    <string name="games_draw_text">Draw: %s</string>
+    <string name="games_lost_text">Lost: %s</string>
+    <string name="goals_difference_text">Goals difference: %s</string>
+    <string name="score_text">Score: %s</string>
+
+    <string name="players_label">Players</string>
+
+    <string name="address_text">Address: %s</string>
+    <string name="phone_text">Phone: %s</string>
+    <string name="website_text">Website: %s</string>
+    <string name="founded_text">Founded: %s</string>
+    <string name="venue_text">Venue: %s</string>
+    <string name="colors_text">Colors: %s</string>
 </resources>

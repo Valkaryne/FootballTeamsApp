@@ -18,7 +18,7 @@
             android:id="@+id/team_stats_item_image"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:contentDescription="@string/a11y_team_stats_item_image"
+            android:contentDescription="@string/a11y_team_crest_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

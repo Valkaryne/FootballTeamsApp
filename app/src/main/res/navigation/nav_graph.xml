@@ -7,6 +7,20 @@
     <fragment
         android:id="@+id/team_stats_list_fragment"
         android:name="com.epam.valkaryne.footballteamsapp.view.TeamStatsListFragment"
-        tools:layout="@layout/fragment_team_stats_list" />
+        tools:layout="@layout/fragment_team_stats_list">
+        <action
+            android:id="@+id/action_teamStatsFragment_to_teamDetailsFragment"
+            app:destination="@id/team_details_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/team_details_fragment"
+        android:name="com.epam.valkaryne.footballteamsapp.view.TeamDetailsFragment"
+        tools:layout="@layout/fragment_team_details">
+        <argument
+            android:name="teamId"
+            app:argType="long"
+            app:nullable="false" />
+    </fragment>
 
 </navigation>

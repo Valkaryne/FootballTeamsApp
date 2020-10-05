@@ -14,15 +14,24 @@ import com.epam.valkaryne.footballteamsapp.vm.model.TeamStatsViewStateModel
 /**
  * Adapter for the list of teams' statistics
  */
-class TeamStatsAdapter :
+class TeamStatsAdapter(private val listener: (TeamStatsViewStateModel) -> Unit) :
     ListAdapter<TeamStatsViewStateModel, TeamStatsAdapter.TeamStatsViewHolder>(TeamStatsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamStatsViewHolder {
-        return TeamStatsViewHolder(
+        val viewHolder = TeamStatsViewHolder(
             ItemListTeamStatsBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
+
+        viewHolder.itemView.setOnClickListener {
+            val position = viewHolder.bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener(getItem(position))
+            }
+        }
+
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: TeamStatsViewHolder, position: Int) {
@@ -35,26 +44,28 @@ class TeamStatsAdapter :
     class TeamStatsViewHolder(private val binding: ItemListTeamStatsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        private val context = binding.root.context
+
         fun bind(item: TeamStatsViewStateModel) {
-            binding.teamStatsItemImage.loadImageFromUrl(item.crestUrl)
-            binding.teamStatsItemTitle.text = item.name
-            binding.teamStatsItemPosition.text = StringUtils.convertNumberToOrdinal(item.position)
-            binding.teamStatsItemPlayed.text = String.format(
-                binding.root.context.getString(R.string.played_games_label),
-                item.playedGames
-            )
-            binding.teamStatsItemWon.text =
-                String.format(binding.root.context.getString(R.string.games_won_label), item.won)
-            binding.teamStatsItemDraw.text =
-                String.format(binding.root.context.getString(R.string.games_draw_label), item.draw)
-            binding.teamStatsItemLost.text =
-                String.format(binding.root.context.getString(R.string.games_lost_label), item.lost)
-            binding.teamStatsItemScore.text =
-                String.format(binding.root.context.getString(R.string.score_label), item.points)
-            binding.teamStatsItemGoalsDiff.text = String.format(
-                binding.root.context.getString(R.string.goals_difference_label),
-                item.goalDifference
-            )
+            with(binding) {
+                teamStatsItemImage.loadImageFromUrl(item.crestUrl)
+                teamStatsItemTitle.text = item.name
+                teamStatsItemPosition.text = StringUtils.convertNumberToOrdinal(item.position)
+                teamStatsItemPlayed.text =
+                    String.format(context.getString(R.string.played_games_text), item.playedGames)
+                teamStatsItemWon.text =
+                    String.format(context.getString(R.string.games_won_text), item.won)
+                teamStatsItemDraw.text =
+                    String.format(context.getString(R.string.games_draw_text), item.draw)
+                teamStatsItemLost.text =
+                    String.format(context.getString(R.string.games_lost_text), item.lost)
+                teamStatsItemScore.text =
+                    String.format(context.getString(R.string.score_text), item.points)
+                teamStatsItemGoalsDiff.text = String.format(
+                    context.getString(R.string.goals_difference_text),
+                    item.goalDifference
+                )
+            }
         }
     }
 }

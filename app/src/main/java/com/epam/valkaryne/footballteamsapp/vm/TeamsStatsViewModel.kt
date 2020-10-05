@@ -29,7 +29,7 @@ class TeamsStatsViewModel(private val getTeamsStatsUseCase: GetTeamsStatsUseCase
             getTeamsStatsUseCase.executeUseCase().let { result ->
                 if (result.resultType == ResultType.SUCCESS) {
                     _teamsStatsViewState.value =
-                        TeamsStatsViewStateMapper.invoke(result.data?.teamsStats)
+                        TeamsStatsViewStateMapper(result.data?.teamsStats)
                 } else {
                     _teamsStatsViewState.value = ViewState.Error(result.error!!)
                 }

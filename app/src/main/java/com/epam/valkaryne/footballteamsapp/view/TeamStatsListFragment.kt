@@ -7,21 +7,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.epam.valkaryne.footballteamsapp.databinding.FragmentTeamStatsListBinding
 import com.epam.valkaryne.footballteamsapp.view.adapter.TeamStatsAdapter
 import com.epam.valkaryne.footballteamsapp.vm.TeamsStatsViewModel
 import com.epam.valkaryne.footballteamsapp.vm.ViewState
+import com.epam.valkaryne.footballteamsapp.vm.model.TeamStatsViewStateModel
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 /**
  * Fragment that shows to user a list of teams' statistics for the certain league
  */
 class TeamStatsListFragment : Fragment() {
 
+    private val teamDetailsListener: (TeamStatsViewStateModel) -> Unit = {
+        findNavController().navigate(
+            TeamStatsListFragmentDirections.actionTeamStatsFragmentToTeamDetailsFragment(
+                it.id
+            )
+        )
+    }
+
     private lateinit var binding: FragmentTeamStatsListBinding
     private val viewModel: TeamsStatsViewModel by viewModel()
-    private val adapter = TeamStatsAdapter()
+    private val adapter: TeamStatsAdapter by inject { parametersOf(teamDetailsListener) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
