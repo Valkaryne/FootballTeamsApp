@@ -32,6 +32,6 @@ class GetTeamsStatsUseCase(private val repository: TeamsRepository) {
     }
 
     private fun getSortedByGoalsDifferenceStats(stats: TeamsStatsDomainModel?): TeamsStatsDomainModel {
-        return TeamsStatsDomainModel(stats?.teamsStats?.sortedBy { it.goalDifference } ?: listOf())
+        return TeamsStatsDomainModel(stats?.teamsStats?.sortedByDescending { it.goalDifference } ?: listOf())
     }
 }
