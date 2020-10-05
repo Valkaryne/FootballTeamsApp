@@ -21,8 +21,9 @@
         android:id="@+id/button_england"
         android:layout_width="167dp"
         android:layout_height="100dp"
-        android:src="@drawable/flag_england"
+        android:contentDescription="@string/a11y_country_flag_image"
         android:scaleType="fitXY"
+        android:src="@drawable/flag_england"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/button_germany"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,12 +34,13 @@
         android:id="@+id/button_germany"
         android:layout_width="167dp"
         android:layout_height="100dp"
-        android:src="@drawable/flag_germany"
+        android:contentDescription="@string/a11y_country_flag_image"
         android:scaleType="fitXY"
+        android:src="@drawable/flag_germany"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/button_england"
         app:layout_constraintTop_toBottomOf="@id/prompt_tv"
-        app:layout_constraintVertical_bias="0.25"/>
+        app:layout_constraintVertical_bias="0.25" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

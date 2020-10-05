@@ -3,6 +3,7 @@
     <string name="football_data_prompt">Welcome to the FootballData Application!\nPlease, choose the country which football teams you are interested in</string>
 
     <string name="a11y_team_crest_image">Team\'s Crest</string>
+    <string name="a11y_country_flag_image">League Country\'s Flag</string>
 
     <string name="played_games_text">Played games: %s</string>
     <string name="games_won_text">Won: %s</string>
@@ -19,4 +20,5 @@
     <string name="founded_text">Founded: %s</string>
     <string name="venue_text">Venue: %s</string>
     <string name="colors_text">Colors: %s</string>
+
 </resources>
