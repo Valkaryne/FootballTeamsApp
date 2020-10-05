@@ -1,11 +1,11 @@
 package com.epam.valkaryne.footballteamsapp.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,13 +59,15 @@ class TeamStatsListFragment : Fragment() {
     private fun subscribeUi() {
         viewModel.teamsStatsViewState.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is ViewState.Success -> adapter.submitList(state.data)
-                is ViewState.Error -> Toast.makeText(
-                    context,
-                    "${state.error.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-                is ViewState.Loading -> Log.d("SuperCat", "Loading")
+                is ViewState.Success -> {
+                    binding.progressBar.isVisible = false
+                    adapter.submitList(state.data)
+                }
+                is ViewState.Error -> {
+                    binding.progressBar.isVisible = false
+                    Toast.makeText(context, "${state.error.message}", Toast.LENGTH_LONG).show()
+                }
+                is ViewState.Loading -> binding.progressBar.isVisible = true
             }
         }
     }

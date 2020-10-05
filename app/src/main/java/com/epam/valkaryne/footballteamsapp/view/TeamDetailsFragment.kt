@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class TeamDetailsFragment : Fragment() {
 
-   private val args: TeamDetailsFragmentArgs by navArgs()
+    private val args: TeamDetailsFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentTeamDetailsBinding
     private val viewModel: TeamDetailsViewModel by viewModel()
@@ -54,15 +55,15 @@ class TeamDetailsFragment : Fragment() {
         viewModel.teamDetailsViewState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is ViewState.Success -> {
+                    binding.progressBar.isVisible = false
                     populateViews(state.data)
                     adapter.submitList(state.data.squad)
                 }
-                is ViewState.Error -> Toast.makeText(
-                    context,
-                    "${state.error.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-                is ViewState.Loading -> Log.d("SuperCat", "Loading")
+                is ViewState.Error -> {
+                    binding.progressBar.isVisible = false
+                    Toast.makeText(context, "${state.error.message}", Toast.LENGTH_LONG).show()
+                }
+                is ViewState.Loading -> binding.progressBar.isVisible = true
             }
         }
     }
