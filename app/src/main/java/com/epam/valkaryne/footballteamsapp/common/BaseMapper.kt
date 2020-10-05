@@ -11,8 +11,8 @@ interface BaseMapper<in A, out B> {
     /**
      * Transforms given model type to chosen.
      *
-     * @param model the given model type
+     * @param modelType the given model type
      * @return the mapping result
      */
-    fun map(modelType: A?): B
+    operator fun invoke(modelType: A?): B
 }

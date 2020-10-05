@@ -11,7 +11,7 @@ import com.epam.valkaryne.footballteamsapp.vm.model.TeamStatsViewStateModel
 object TeamsStatsViewStateMapper :
     BaseMapper<List<TeamStatsDomainModel>?, ViewState<List<TeamStatsViewStateModel>, Exception>> {
 
-    override fun map(modelType: List<TeamStatsDomainModel>?): ViewState<List<TeamStatsViewStateModel>, Exception> {
+    override fun invoke(modelType: List<TeamStatsDomainModel>?): ViewState<List<TeamStatsViewStateModel>, Exception> {
         return ViewState.Success(
             modelType?.map {
                 TeamStatsViewStateModel(
